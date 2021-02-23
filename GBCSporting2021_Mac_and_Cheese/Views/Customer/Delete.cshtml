@@ -1,3 +1,9 @@
 ﻿@{
     ViewBag.Title = "Delete Customer";
 }
+<h2>Delete Customer</h2>
+<p>Do you really want to delete the customer (FName) (LName)</p>
+<form asp-controller="Customer" asp-action="Delete" method="post">
+    <button type="submit">Yes</button>
+    <button asp-controller="Customer" asp-action="List"></button>
+</form>
