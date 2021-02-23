@@ -21,6 +21,11 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             return View();
         }
 
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
     }
     
 }

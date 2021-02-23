@@ -8,3 +8,36 @@
         ViewBag.Title = "Edit Customer";
     }
 }
+<h2>@ViewBag.Title</h2>
+<form asp-controller="Customer" asp-action="@ViewBag.Action">
+    <label for="fname">First Name</label>
+    <input type="text" name="fname" id="fname" placeholder="eg. John" value="" />
+    <br />
+    <label for="lname">Last Name</label>
+    <input type="text" name="lname" id="lname" placeholder="eg.Doe" value="" />
+    <br />
+    <label for="address">Address</label>
+    <input type="text" name="address" id="address" placeholder="eg. 123 First Street" value="" />
+    <br />
+    <label for="city">City</label>
+    <input type="text" name="city" id="city" placeholder="eg. Toronto" value="" />
+    <br />
+    <label for="state">State</label>
+    <input type="text" name="state" id="state" placeholder="eg. Ontario" value="" />
+    <br />
+    <label for="postal">Postal Code</label>
+    <input type="text" name="postal" id="postal" placeholder="eg. M4M 4M4" value="" />
+    <br />
+    <label for="country">Country</label>
+    <input type="text" name="country" id="country" value="" /> <!-- Please add the list of countries here as a combo box -->
+    <br />
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="eg. jonsnow@doamin.com" value=""/>
+    <br />
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" id="phone" placeholder="123-123-1234" value="" />
+    <br />
+    <button type="submit">Save</button>
+    <button asp-controller="Customer" asp-action="List">Cancel</button>
+
+</form>

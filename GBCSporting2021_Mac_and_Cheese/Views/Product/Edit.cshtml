@@ -8,3 +8,26 @@
         ViewBag.Title = "Edit Product";
     }
 }
+
+<h2>@ViewBag.Title</h2>
+<form asp-controller="Product" asp-action="@ViewBag.Action">
+    <label for="code">Code</label>
+    <br />
+    <input type="text" name="code" id="code" placeholder="eg. TRNY10" value="" />
+    <br />
+    <label for="name">Name</label>
+    <br />
+    <input type="text" name="name" id="name" placeholder="eg. Tournament Master 2.0" value="" />
+    <br />
+    <label for="price">Yearly Price</label>
+    <br />
+    <input type="number" name="price" id="price" placeholder="eg. 14.99" value="" />
+    <br />
+    <label for="rDate">Release Date</label>
+    <br />
+    <input type="datetime" name="rDate" id="rDate" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
+    <br />
+    <button type="submit">Save</button>
+    <button asp-controller="Product" asp-action="List">Cancel</button>
+
+</form>

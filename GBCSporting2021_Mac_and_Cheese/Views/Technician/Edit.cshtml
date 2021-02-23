@@ -8,3 +8,22 @@
         ViewBag.Title = "Edit Technician";
     }
 }
+
+<h2>@ViewBag.Title</h2>
+<form asp-controller="Technician" asp-action="@ViewBag.Action">
+    <label for="name">Name</label>
+    <br />
+    <input type="text" name="name" id="name" placeholder="eg. John Doe" value="" />
+    <br />
+    <label for="email">Email</label>
+    <br />
+    <input type="email" name="email" id="email" placeholder="eg. john@doe.com" value="" />
+    <br />
+    <label for="phone">Phone</label>
+    <br />
+    <input type="text" name="phone" id="phone" placeholder="eg. 123-123-1234" value="" />
+    <br />
+    <button type="submit">Save</button>
+    <button asp-controller="Technician" asp-action="List">Cancel</button>
+
+</form>
