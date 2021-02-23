@@ -10,6 +10,9 @@
 }
 
 <h2>@ViewBag.Title</h2>
+
+<div asp-validation-summary="All"></div>
+
 <form asp-controller="Incident" asp-action="@ViewBag.Action">
     <label for="customer">Customer</label>
     <br />
