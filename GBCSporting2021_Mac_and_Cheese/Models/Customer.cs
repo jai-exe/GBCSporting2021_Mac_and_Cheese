@@ -26,9 +26,11 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
         [Required(ErrorMessage = "Please Enter the State")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "Please Select a Country from the Dropdown Menu")]
+        [Range(1, 4, ErrorMessage = "Please Select a Country from the Dropdown Menu")]
+        public int CountryId { get; set; }
         public Country Country { get; set; }
 
+        public string PostalCode { get; set; }
         public string CustEmail { get; set; }
 
         public string CustPhone { get; set; }
