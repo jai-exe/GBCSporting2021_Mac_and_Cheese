@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GBCSporting2021_Mac_and_Cheese.Models
 {
-    public class SportContext:DbContext
+    public class ContactContext:DbContext
     {
-        public SportContext(DbContextOptions<SportContext> options) : base(options)
+        public ContactContext(DbContextOptions<ContactContext> options) : base(options)
         {
 
         }

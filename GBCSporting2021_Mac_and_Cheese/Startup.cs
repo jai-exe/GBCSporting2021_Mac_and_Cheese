@@ -32,7 +32,7 @@ namespace GBCSporting2021_Mac_and_Cheese
             });
 
             services.AddControllersWithViews();
-            services.AddDbContext<SportContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SportContext")));
+            services.AddDbContext<ContactContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ContactContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
