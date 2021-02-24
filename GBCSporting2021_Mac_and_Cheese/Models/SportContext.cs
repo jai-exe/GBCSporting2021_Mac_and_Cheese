@@ -147,7 +147,27 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                     TechPhone = "800-555-0444"
                 }
                 );
-            
+            modelBuilder.Entity<Incident>().HasData(
+                new Incident
+                {
+                    IncidentId = 1,
+                    CustomerId = 2,
+                    ProductCode = "DRAFT10",
+                    Title = "Could not install",
+                    Description = "Could npt install the Draft Manager 1.0",
+                    DateOpened = DateTime.Parse("1/8/2020"),
+                    TechnicianId = 1
+                }
+                new Incident
+                {
+                    IncidentId = 2,
+                    CustomerId = 1,
+                    ProductCode = "TEAM10",
+                    Title = "Could not install",
+                    Description = "Could npt install the Team Manager 1.0",
+                    DateOpened = DateTime.Parse("1/8/2020")
+                }
+                );
         }
     }
 }

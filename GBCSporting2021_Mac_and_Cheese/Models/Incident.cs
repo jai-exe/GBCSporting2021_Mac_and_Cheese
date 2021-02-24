@@ -8,10 +8,15 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
 {
     public class Incident
     {
+        public int IncidentId{ get; set;}
         [Required(ErrorMessage ="Please Select a Customer from the List")]
+        public int CustomerId { get; set;}
+
         public Customer Customer { get; set; }
 
         [Required(ErrorMessage = "Please Select a Product from the List")]
+        public string ProductCode { get; set;}
+
         public Product Product { get; set; }
 
         [Required(ErrorMessage = "Please Enter a Title for the Incident")]
@@ -20,7 +25,10 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
         [Required(ErrorMessage = "Please Enter a Description for the Incident")]
         public string Description { get; set; }
 
+        public int? TechnicianId { get; set;}
+
         public Technician Technician { get; set; }
+
 
         [Required(ErrorMessage = "Please Enter a Date for the Opening of Incident Report")]
         public DateTime DateOpened { get; set; }
