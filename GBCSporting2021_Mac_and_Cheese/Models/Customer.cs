@@ -8,7 +8,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
 {
     public class Customer
     {
-
+        [Key]
         public int CustId { get; set; }
 
         [Required(ErrorMessage = "Please Enter the First Name")]

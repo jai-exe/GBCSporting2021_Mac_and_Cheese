@@ -6685,28 +6685,25 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.AspNetCore.Mvc.DataAnnotations >= 2.2.0",
+      "Microsoft.EntityFrameworkCore >= 5.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\salon\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\jaiis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\salon\\Source\\Repos\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese.csproj",
+      "projectUniqueName": "D:\\Jai\\T127\\Semester 4\\WEB APP DEV\\Assignment1\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese.csproj",
       "projectName": "GBCSporting2021_Mac_and_Cheese",
-      "projectPath": "C:\\Users\\salon\\Source\\Repos\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese.csproj",
-      "packagesPath": "C:\\Users\\salon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\salon\\Source\\Repos\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese\\obj\\",
+      "projectPath": "D:\\Jai\\T127\\Semester 4\\WEB APP DEV\\Assignment1\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese.csproj",
+      "packagesPath": "C:\\Users\\jaiis\\.nuget\\packages\\",
+      "outputPath": "D:\\Jai\\T127\\Semester 4\\WEB APP DEV\\Assignment1\\GBCSporting2021_Mac_and_Cheese\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\salon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jaiis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6735,6 +6732,10 @@
           "Microsoft.AspNetCore.Mvc.DataAnnotations": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.3, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
@@ -6765,7 +6766,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,6 +8,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
 {
     public class Incident
     {
+        [Key]
         public int IncidentId{ get; set;}
         [Required(ErrorMessage ="Please Select a Customer from the List")]
         public int CustomerId { get; set;}

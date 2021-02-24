@@ -104,7 +104,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 },
                 new Product
                 {
-                    Code = "DREAFT10",
+                    Code = "DRAFT10",
                     ProductName = "Draft Manager 1.0",
                     Price = 4.99,
                     DateReleased = DateTime.Parse("2/1/2017")
@@ -157,7 +157,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                     Description = "Could npt install the Draft Manager 1.0",
                     DateOpened = DateTime.Parse("1/8/2020"),
                     TechnicianId = 1
-                }
+                },
                 new Incident
                 {
                     IncidentId = 2,
@@ -167,7 +167,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                     Description = "Could npt install the Team Manager 1.0",
                     DateOpened = DateTime.Parse("1/8/2020")
                 }
-                );
+                ) ;
         }
     }
 }
