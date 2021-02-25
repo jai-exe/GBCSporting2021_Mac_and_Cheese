@@ -4,6 +4,6 @@
 <h2 class="display-4">Delete Customer</h2>
 <p>Do you really want to delete the customer (FName) (LName)</p>
 <form asp-controller="Customer" asp-action="Delete" method="post">
-    <button type="submit">Yes</button>
-    <button asp-controller="Customer" asp-action="List"></button>
+    <button class="btn btn-primary" type="submit">Yes</button>
+    <a class="btn btn-primary" asp-controller="Customer" asp-action="List"></a>
 </form>

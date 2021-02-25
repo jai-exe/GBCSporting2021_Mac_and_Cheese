@@ -14,37 +14,44 @@
 <div asp-validation-summary="All"></div>
 
 <form asp-controller="Incident" asp-action="@ViewBag.Action">
-    <label for="customer">Customer</label>
+    <div class="form">
+        <label for="customer">Customer</label>
+        <br />
+        <input type="text" name="customer" class="form-control" value="" /> <!-- Display all the customers here as a combo box -->
+    </div>
+    <div class="form-group">
+        <label for="product">Product</label>
+        <br />
+        <input type="text" name="product" class="form-control" value="" /> <!-- Display all the products here as a combo box -->
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <br />
+        <input type="text" name="title" class="form-control" placeholder="eg. Error Launching Program" value="" />
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <br />
+        <textarea name="description" class="form-control" rows="2" placeholder="eg. Program fails to run with error 502: Bad Gateway">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="technician">Technician</label>
+        <br />
+        <input type="text" name="technician" class="form-control" value="" /> <!-- Display all the technicians here as a combo box -->
+    </div>
+    <div class="form-group">
+        <label for="dateOpened">Date Opened</label>
+        <br />
+        <input type="datetime" name="dateOpened" class="form-control" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
+    </div>
+    <div class="form-group">
+        <label for="dateClosed">Date Closed</label>
+        <br />
+        <input type="datetime" name="dateClosed" class="form-control" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
+    </div>
     <br />
-    <input type="text" name="customer" id="customer" value="" /> <!-- Display all the customers here as a combo box -->
-    <br />
-    <label for="product">Product</label>
-    <br />
-    <input type="text" name="product" id="product" value="" /> <!-- Display all the products here as a combo box -->
-    <br />
-    <label for="title">Title</label>
-    <br />
-    <input type="text" name="title" id="title" placeholder="eg. Error Launching Program" value="" />
-    <br />
-    <label for="description">Description</label>
-    <br />
-    <textarea name="description" id="description" rows="2" placeholder="eg. Program fails to run with error 502: Bad Gateway">
-
-    </textarea>
-    <br />
-    <label for="technician">Technician</label>
-    <br />
-    <input type="text" name="technician" id="technician" value="" /> <!-- Display all the technicians here as a combo box -->
-    <br />
-    <label for="dateOpened">Date Opened</label>
-    <br />
-    <input type="datetime" name="dateOpened" id="dateOpened" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
-    <br />
-    <label for="dateClosed">Date Closed</label>
-    <br />
-    <input type="datetime" name="dateClosed" id="dateClosed" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
-    <br />
-    <button type="submit">Save</button>
-    <button asp-controller="Incident" asp-action="List">Cancel</button>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a class="btn btn-primary" asp-controller="Incident" asp-action="List">Cancel</a>
 
 </form>

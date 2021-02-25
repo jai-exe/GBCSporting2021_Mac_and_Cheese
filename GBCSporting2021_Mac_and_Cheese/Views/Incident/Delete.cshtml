@@ -4,6 +4,6 @@
 <h2 class="display-4">Delete Incident</h2>
 <p>Do you really want to delete the Incident of (CustomerName) for (ProductName)</p>
 <form asp-controller="Incident" asp-action="Delete" method="post">
-    <button type="submit">Yes</button>
-    <button asp-controller="Incident" asp-action="List"></button>
+    <button class="btn btn-primary" type="submit">Yes</button>
+    <a class="btn btn-primary" asp-controller="Incident" asp-action="List">No</a>
 </form>

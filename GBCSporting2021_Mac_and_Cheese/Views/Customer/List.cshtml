@@ -4,7 +4,7 @@
 }
 <h2 class="display-4">Customer Manager</h2>
 <br />
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Name</th>
@@ -21,11 +21,11 @@
             <td>@customer.CustFName @customer.CustLName</td>
             <td>@customer.CustEmail</td>
             <td>@customer.City</td>
-            <td><button asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustId">Edit</button></td>
-            <td><button asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustId">Delete</button></td>
+            <td><a class="btn btn-primary" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustId">Edit</a></td>
+            <td><a class="btn btn-primary" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustId">Delete</a></td>
         </tr>
         }
     </tbody>
 </table>
 
-<a asp-controller="Customer" asp-action="Add">Add Customer</a>
+<a class="btn btn-primary" asp-controller="Customer" asp-action="Add">Add Customer</a>

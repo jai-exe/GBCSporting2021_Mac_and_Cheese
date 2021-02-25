@@ -14,19 +14,23 @@
 <div asp-validation-summary="All"></div>
 
 <form asp-controller="Technician" asp-action="@ViewBag.Action">
-    <label for="name">Name</label>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <br />
+        <input type="text" name="name" class="form-control" placeholder="eg. John Doe" value="" />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <br />
+        <input type="email" name="email" class="form-control" placeholder="eg. john@doe.com" value="" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <br />
+        <input type="text" name="phone" class="form-control" placeholder="eg. 123-123-1234" value="" />
+    </div>
     <br />
-    <input type="text" name="name" id="name" placeholder="eg. John Doe" value="" />
-    <br />
-    <label for="email">Email</label>
-    <br />
-    <input type="email" name="email" id="email" placeholder="eg. john@doe.com" value="" />
-    <br />
-    <label for="phone">Phone</label>
-    <br />
-    <input type="text" name="phone" id="phone" placeholder="eg. 123-123-1234" value="" />
-    <br />
-    <button type="submit">Save</button>
-    <button asp-controller="Technician" asp-action="List">Cancel</button>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a class="btn btn-primary" asp-controller="Technician" asp-action="List">Cancel</a>
 
 </form>

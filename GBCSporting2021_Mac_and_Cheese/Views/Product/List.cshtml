@@ -4,7 +4,7 @@
 }
 <h2 class="display-4">Product Manager</h2>
 <br />
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Code</th>
@@ -23,11 +23,11 @@
             <td>@product.ProductName</td>
             <td>@product.Price.ToString("c2")</td>
             <td>@product.DateReleased.ToString("MM/dd/yyyy")</td>
-            <td><button asp-controller="Product" asp-action="Edit" asp-route-id="@product.Code">Edit</button></td>
-            <td><button asp-controller="Product" asp-action="Delete" asp-route-id="@product.Code">Delete</button></td>
+            <td><a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Code">Edit</a></td>
+            <td><a class="btn btn-primary" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Code">Delete</a></td>
         </tr>
         }
     </tbody>
 </table>
 
-<a asp-controller="Product" asp-action="Add">Add Product</a>
+<a class="btn btn-primary" asp-controller="Product" asp-action="Add">Add Product</a>

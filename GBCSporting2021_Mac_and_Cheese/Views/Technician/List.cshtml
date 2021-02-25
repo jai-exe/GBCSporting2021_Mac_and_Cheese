@@ -5,7 +5,7 @@
 
 <h2 class="display-4">Technician Manager</h2>
 <br />
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Name</th>
@@ -22,12 +22,12 @@
             <td>@tech.TechName</td>
             <td>@tech.TechEmail</td>
             <td>@tech.TechPhone</td>
-            <td><button asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechId">Edit</button></td>
-            <td><button asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechId">Delete</button></td>
+            <td><a class="btn btn-primary" asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechId">Edit</a></td>
+            <td><a class="btn btn-primary" asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechId">Delete</a></td>
         </tr>
         }
         
     </tbody>
 </table>
 
-<a asp-controller="Technician" asp-action="Add">Add Technician</a>
+<a class="btn btn-primary" asp-controller="Technician" asp-action="Add">Add Technician</a>
