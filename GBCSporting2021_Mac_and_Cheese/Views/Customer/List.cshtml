@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Customer>
+@{
     ViewBag.Title = "View Customers";
 }
 <h2 class="display-4">Customer Manager</h2>
@@ -14,9 +15,16 @@
         </tr>
     </thead>
     <tbody>
+        @foreach (Customer customer in Model)
+        {
         <tr>
-            <td></td>
+            <td>@customer.CustFName @customer.CustLName</td>
+            <td>@customer.CustEmail</td>
+            <td>@customer.City</td>
+            <td><button asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustId">Edit</button></td>
+            <td><button asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustId">Delete</button></td>
         </tr>
+        }
     </tbody>
 </table>
 
