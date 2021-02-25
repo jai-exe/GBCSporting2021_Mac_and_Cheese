@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Technician>
+@{
     ViewBag.Title = "View Technicians";
 }
 
@@ -15,9 +16,17 @@
         </tr>
     </thead>
     <tbody>
+        @foreach (Technician tech in Model)
+        {
         <tr>
-            <td></td>
+            <td>@tech.TechName</td>
+            <td>@tech.TechEmail</td>
+            <td>@tech.TechPhone</td>
+            <td><button asp-controller="Technician" asp-action="Edit" asp-route-id="@tech.TechId">Edit</button></td>
+            <td><button asp-controller="Technician" asp-action="Delete" asp-route-id="@tech.TechId">Delete</button></td>
         </tr>
+        }
+        
     </tbody>
 </table>
 

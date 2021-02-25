@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Product>
+@{
     ViewBag.Title = "View Product";
 }
 <h2 class="display-4">Product Manager</h2>
@@ -15,9 +16,17 @@
         </tr>
     </thead>
     <tbody>
+        @foreach (Product product in Model)
+        {
         <tr>
-            <td></td>
+            <td>@product.Code</td>
+            <td>@product.ProductName</td>
+            <td>@product.Price.ToString("c2")</td>
+            <td>@product.DateReleased.ToString("MM/dd/yyyy")</td>
+            <td><button asp-controller="Product" asp-action="Edit" asp-route-id="@product.Code">Edit</button></td>
+            <td><button asp-controller="Product" asp-action="Delete" asp-route-id="@product.Code">Delete</button></td>
         </tr>
+        }
     </tbody>
 </table>
 

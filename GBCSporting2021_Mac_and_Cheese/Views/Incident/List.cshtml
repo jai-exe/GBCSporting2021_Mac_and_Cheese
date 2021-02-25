@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Incident>
+@{
     ViewBag.Title = "View Incidents";
 }
 <h2 class="display-4">Incident Manager</h2>
@@ -15,9 +16,17 @@
         </tr>
     </thead>
     <tbody>
+        @foreach (Incident inc in Model)
+        {
         <tr>
-            <td></td>
+            <td>@inc.Title</td>
+            <td>@inc.Customer.CustFName @inc.Customer.CustLName</td>
+            <td>@inc.Product.ProductName</td>
+            <td>@inc.DateOpened.ToString("MM/dd/yyyy")</td>
+            <td><button asp-controller="Incident" asp-action="Edit" asp-route-id="@inc.IncidentId">Edit</button></td>
+            <td><button asp-controller="Incident" asp-action="Delete" asp-route-id="@inc.IncidentId">Delete</button></td>
         </tr>
+        }
     </tbody>
 </table>
 

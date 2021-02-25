@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GBCSporting2021_Mac_and_Cheese"
+    "\\GBCSporting2021_Mac_and_Cheese",
+    "\\GBCSporting2021_Mac_and_Cheese\\Controllers",
+    "\\GBCSporting2021_Mac_and_Cheese\\Models"
   ],
-  "SelectedNode": "\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese.sln",
+  "SelectedNode": "\\GBCSporting2021_Mac_and_Cheese\\Controllers\\CustomerController.cs",
   "PreviewInSolutionExplorer": false
 }

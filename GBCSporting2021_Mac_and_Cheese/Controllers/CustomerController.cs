@@ -65,8 +65,6 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
                 ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
                 return View(customer);
             }
-           
-
         }
         [HttpGet]
         public IActionResult Delete(int id)

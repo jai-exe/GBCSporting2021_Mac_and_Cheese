@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GBCSporting2021_Mac_and_Cheese.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,24 +10,88 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
 {
     public class IncidentController : Controller
     {
+        private ContactContext context { get; set; }
+
+        public IncidentController(ContactContext ctx)
+        {
+            context = ctx;
+        }
+        [HttpGet]
         public IActionResult List()
         {
-            return View();
+            var incidents = context.Incidents
+                               .Include(c => c.Customer)
+                               .Include(c => c.Product)
+                               .Include(c => c.Technician)
+                               .OrderBy(c => c.Title).ToList();
+            return View(incidents);
         }
-
+        [HttpGet]
         public IActionResult Add()
         {
-            return View("Edit");
+            ViewBag.Action = "Add";
+            ViewBag.Customers = context.Customers.OrderBy(c => c.CustFName).ToList();
+            ViewBag.Products = context.Products.OrderBy(c => c.ProductName).ToList();
+            ViewBag.Technicians = context.Technicians.OrderBy(c => c.TechName).ToList();
+            return View("Edit", new Incident());
         }
-
-        public IActionResult Edit()
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            return View();
+            var incidents = context.Incidents
+                               .Include(c => c.Customer)
+                               .Include(c => c.Product)
+                               .Include(c => c.Technician)
+                               .FirstOrDefault(c => c.IncidentId == id);
+
+            ViewBag.Action = "Edit";
+            ViewBag.Customers = context.Customers.OrderBy(c => c.CustFName).ToList();
+            ViewBag.Products = context.Products.OrderBy(c => c.ProductName).ToList();
+            ViewBag.Technicians = context.Technicians.OrderBy(c => c.TechName).ToList();
+            return View(incidents);
         }
-
-        public IActionResult Delete()
+        [HttpPost]
+        public IActionResult Edit(Incident incident)
         {
-            return View();
+            string action = (incident.IncidentId == 0) ? "Add" : "Edit";
+            if (ModelState.IsValid)
+            {
+                if (action == "Add")
+                {
+                    context.Incidents.Add(incident);
+                }
+                else
+                {
+                    context.Incidents.Update(incident);
+                }
+                context.SaveChanges();
+                return RedirectToAction("List", "Incident");
+            }
+            else
+            {
+                ViewBag.Action = action;
+                ViewBag.Customers = context.Customers.OrderBy(c => c.CustFName).ToList();
+                ViewBag.Products = context.Products.OrderBy(c => c.ProductName).ToList();
+                ViewBag.Technicians = context.Technicians.OrderBy(c => c.TechName).ToList();
+                return View(incident);
+            }
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var incidents = context.Incidents
+                               .Include(c => c.Customer)
+                               .Include(c => c.Product)
+                               .Include(c => c.Technician)
+                               .FirstOrDefault(c => c.IncidentId == id);
+            return View(incidents);
+        }
+        [HttpPost]
+        public IActionResult Delete(Incident incident)
+        {
+            context.Incidents.Remove(incident);
+            context.SaveChanges();
+            return RedirectToAction("List", "Incident");
         }
     }
 }
