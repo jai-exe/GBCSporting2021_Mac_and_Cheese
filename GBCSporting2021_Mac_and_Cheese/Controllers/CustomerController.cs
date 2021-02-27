@@ -39,7 +39,8 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             var customers = context.Customers.Find(id);
             return View(customers);
         }
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Customer customer)
         {
             string action = (customer.CustId == 0) ? "Add" : "Edit";
@@ -60,7 +61,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             {
                 ViewBag.Action = action;
                 ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
-                return View(customer);
+                return View("Edit");
             }
         }
         [HttpGet]
@@ -69,7 +70,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             var customers = context.Customers.Find(id);
             return View(customers);
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(Customer customer)
         {
             context.Customers.Remove(customer);

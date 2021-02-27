@@ -60,7 +60,7 @@ namespace GBCSporting2021_Mac_and_Cheese
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

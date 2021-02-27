@@ -37,7 +37,8 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             ViewBag.Action = "Edit";
             return View(products);
         }
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Product product)
         {
             string action = (product.ProductId == 0) ? "Add" : "Edit";
@@ -66,7 +67,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             var products = context.Products.Find(id);
             return View(products);
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(Product products)
         {
             context.Products.Remove(products);

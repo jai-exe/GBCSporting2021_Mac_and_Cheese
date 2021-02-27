@@ -36,7 +36,8 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             ViewBag.Action = "Edit";
             return View(technicians);
         }
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Technician tech)
         {
             string action = (tech.TechId == 0) ? "Add" : "Edit";
@@ -65,7 +66,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             var tech = context.Technicians.Find(id);
             return View(tech);
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(Technician tech)
         {
             context.Technicians.Remove(tech);

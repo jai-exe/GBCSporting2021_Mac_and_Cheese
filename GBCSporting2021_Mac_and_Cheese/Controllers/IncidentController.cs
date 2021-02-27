@@ -45,7 +45,8 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             ViewBag.Technicians = context.Technicians.OrderBy(c => c.TechName).ToList();
             return View(incidents);
         }
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Incident incident)
         {
             string action = (incident.IncidentId == 0) ? "Add" : "Edit";
@@ -77,7 +78,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             var incidents = context.Incidents.Find(id);
             return View(incidents);
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(Incident incident)
         {
             context.Incidents.Remove(incident);
