@@ -10,9 +10,9 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
 {
     public class TechnicianController : Controller
     {
-        private ContactContext context { get; set; }
+        private SportContext context { get; set; }
 
-        public TechnicianController(ContactContext ctx)
+        public TechnicianController(SportContext ctx)
         {
             context = ctx;
         }
@@ -32,13 +32,11 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var technicians = context.Technicians
-                               .FirstOrDefault(c => c.TechId == id);
-
+            var technicians = context.Technicians.Find(id);
             ViewBag.Action = "Edit";
             return View(technicians);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(Technician tech)
         {
             string action = (tech.TechId == 0) ? "Add" : "Edit";
@@ -64,11 +62,10 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var tech = context.Technicians
-                               .FirstOrDefault(c => c.TechId == id);
+            var tech = context.Technicians.Find(id);
             return View(tech);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Delete(Technician tech)
         {
             context.Technicians.Remove(tech);

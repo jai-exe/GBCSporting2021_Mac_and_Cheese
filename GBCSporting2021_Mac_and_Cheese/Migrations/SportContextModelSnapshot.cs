@@ -4,16 +4,14 @@ using GBCSporting2021_Mac_and_Cheese.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GBCSporting2021_Mac_and_Cheese.Migrations
 {
-    [DbContext(typeof(ContactContext))]
-    [Migration("20210224061436_Initial")]
-    partial class Initial
+    [DbContext(typeof(SportContext))]
+    partial class SportContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,9 +176,8 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("TechnicianId")
                         .HasColumnType("int");
@@ -193,7 +190,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.HasIndex("ProductCode");
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("TechnicianId");
 
@@ -207,7 +204,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                             DateClosed = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOpened = new DateTime(2020, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Could npt install the Draft Manager 1.0",
-                            ProductCode = "DRAFT10",
+                            ProductId = 4,
                             TechnicianId = 1,
                             Title = "Could not install"
                         },
@@ -218,15 +215,20 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                             DateClosed = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOpened = new DateTime(2020, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Could npt install the Team Manager 1.0",
-                            ProductCode = "TEAM10",
+                            ProductId = 5,
                             Title = "Could not install"
                         });
                 });
 
             modelBuilder.Entity("GBCSporting2021_Mac_and_Cheese.Models.Product", b =>
                 {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateReleased")
                         .HasColumnType("datetime2");
@@ -237,13 +239,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Code");
+                    b.HasKey("ProductId");
 
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
+                            ProductId = 1,
                             Code = "TRNY10",
                             DateReleased = new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 4.9900000000000002,
@@ -251,6 +254,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                         },
                         new
                         {
+                            ProductId = 2,
                             Code = "LEAG10",
                             DateReleased = new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 4.9900000000000002,
@@ -258,6 +262,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                         },
                         new
                         {
+                            ProductId = 3,
                             Code = "LEAGD10",
                             DateReleased = new DateTime(2016, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 7.9900000000000002,
@@ -265,6 +270,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                         },
                         new
                         {
+                            ProductId = 4,
                             Code = "DRAFT10",
                             DateReleased = new DateTime(2017, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 4.9900000000000002,
@@ -272,6 +278,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                         },
                         new
                         {
+                            ProductId = 5,
                             Code = "TEAM10",
                             DateReleased = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 4.9900000000000002,
@@ -351,7 +358,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
 
                     b.HasOne("GBCSporting2021_Mac_and_Cheese.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductCode")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

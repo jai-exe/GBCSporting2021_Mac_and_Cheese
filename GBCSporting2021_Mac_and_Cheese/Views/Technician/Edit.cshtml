@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Technician
+@{
     if (ViewBag.Action == "Add")
     {
         ViewBag.Title = "Add Technician";
@@ -15,22 +16,23 @@
 
 <form asp-controller="Technician" asp-action="@ViewBag.Action">
     <div class="form-group">
-        <label for="name">Name</label>
+        <label asp-for="TechName">Name</label>
         <br />
-        <input type="text" name="name" class="form-control" placeholder="eg. John Doe" value="" />
+        <input asp-for="TechName" type="text" name="name" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="email">Email</label>
+        <label asp-for="TechEmail">Email</label>
         <br />
-        <input type="email" name="email" class="form-control" placeholder="eg. john@doe.com" value="" />
+        <input asp-for="TechEmail" name="email" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="phone">Phone</label>
+        <label asp-for="TechPhone">Phone</label>
         <br />
-        <input type="text" name="phone" class="form-control" placeholder="eg. 123-123-1234" value="" />
+        <input asp-for="TechPhone" type="text" name="phone" class="form-control"/>
     </div>
     <br />
-        <button class="btn btn-primary" type="submit">Save</button>
+    <input type="hidden" asp-for="TechId" />
+        <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
         <a class="btn btn-primary" asp-controller="Technician" asp-action="List">Cancel</a>
 
 </form>

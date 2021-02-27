@@ -1,9 +1,12 @@
-﻿@{
+﻿@model Customer
+@{
     ViewBag.Title = "Delete Customer";
 }
 <h2 class="display-4">Delete Customer</h2>
-<p>Do you really want to delete the customer (FName) (LName)</p>
-<form asp-controller="Customer" asp-action="Delete" method="post">
+<p>Do you really want to delete the customer @Model.CustFName @Model.CustLName ?</p>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CustId" />
+
     <button class="btn btn-primary" type="submit">Yes</button>
-    <a class="btn btn-primary" asp-controller="Customer" asp-action="List"></a>
+    <a class="btn btn-primary" asp-controller="Customer" asp-action="List">No</a>
 </form>

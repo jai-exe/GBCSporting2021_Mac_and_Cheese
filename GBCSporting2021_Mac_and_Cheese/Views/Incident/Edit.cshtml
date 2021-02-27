@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Incident
+@{
     if (ViewBag.Action == "Add")
     {
         ViewBag.Title = "Add Incident";
@@ -15,43 +16,62 @@
 
 <form asp-controller="Incident" asp-action="@ViewBag.Action">
     <div class="form">
-        <label for="customer">Customer</label>
+        <label asp-for="CustomerId">Customer</label>
         <br />
-        <input type="text" name="customer" class="form-control" value="" /> <!-- Display all the customers here as a combo box -->
+        <select asp-for="CustomerId" class="form-control">
+            <option value="">Select a Customer</option>
+            @foreach (Customer c in ViewBag.Customers)
+            {
+                <option value="@c.CustId">@c.CustFName @c.CustLName</option>
+            }
+        </select>
+</div>
+    <div class="form-group">
+        <label asp-for="ProductId">Product</label>
+        <br />
+        <select asp-for="ProductId" class="form-control">
+            <option value="">Select a Product</option>
+            @foreach (Product c in ViewBag.Products)
+            {
+                <option value="@c.ProductId">@c.ProductName</option>
+            }
+        </select>
     </div>
     <div class="form-group">
-        <label for="product">Product</label>
+        <label asp-for="Title">Title</label>
         <br />
-        <input type="text" name="product" class="form-control" value="" /> <!-- Display all the products here as a combo box -->
+        <input asp-for="Title "type="text" name="title" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="title">Title</label>
+        <label asp-for="Description">Description</label>
         <br />
-        <input type="text" name="title" class="form-control" placeholder="eg. Error Launching Program" value="" />
-    </div>
-    <div class="form-group">
-        <label for="description">Description</label>
-        <br />
-        <textarea name="description" class="form-control" rows="2" placeholder="eg. Program fails to run with error 502: Bad Gateway">
+        <textarea asp-for="Description" name="description" class="form-control" rows="2">
         </textarea>
     </div>
     <div class="form-group">
-        <label for="technician">Technician</label>
+        <label asp-for="TechnicianId">Technician</label>
         <br />
-        <input type="text" name="technician" class="form-control" value="" /> <!-- Display all the technicians here as a combo box -->
+        <select asp-for="TechnicianId" class="form-control">
+            <option value="">Select a Technician</option>
+            @foreach (Technician c in ViewBag.Technicians)
+            {
+                <option value="@c.TechId">@c.TechName</option>
+            }
+        </select>
     </div>
     <div class="form-group">
-        <label for="dateOpened">Date Opened</label>
+        <label asp-for="DateOpened">Date Opened</label>
         <br />
-        <input type="datetime" name="dateOpened" class="form-control" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
+        <input asp-for="DateOpened" type="datetime" name="dateOpened" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="dateClosed">Date Closed</label>
+        <label asp-for="DateClosed">Date Closed</label>
         <br />
-        <input type="datetime" name="dateClosed" class="form-control" placeholder="eg. 12/12/2020 12:00:00 AM" value="" />
+        <input asp-for="DateClosed" type="datetime" name="dateClosed" class="form-control"/>
     </div>
     <br />
-        <button class="btn btn-primary" type="submit">Save</button>
+    <input type="hidden" asp-for="IncidentId" />
+        <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
         <a class="btn btn-primary" asp-controller="Incident" asp-action="List">Cancel</a>
 
 </form>

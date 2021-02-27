@@ -24,14 +24,16 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Code = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
                     DateReleased = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Code);
+                    table.PrimaryKey("PK_Products", x => x.ProductId);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,7 +85,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                     IncidentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
-                    ProductCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TechnicianId = table.Column<int>(type: "int", nullable: true),
@@ -100,10 +102,10 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                         principalColumn: "CustId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Incidents_Products_ProductCode",
-                        column: x => x.ProductCode,
+                        name: "FK_Incidents_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Code",
+                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Incidents_Technicians_TechnicianId",
@@ -126,14 +128,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Code", "DateReleased", "Price", "ProductName" },
+                columns: new[] { "ProductId", "Code", "DateReleased", "Price", "ProductName" },
                 values: new object[,]
                 {
-                    { "TRNY10", new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "Tournament Master 1.0" },
-                    { "LEAG10", new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "League Scheduler 1.0" },
-                    { "LEAGD10", new DateTime(2016, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7.9900000000000002, "League Scheduler Deluxe 1.0" },
-                    { "DRAFT10", new DateTime(2017, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "Draft Manager 1.0" },
-                    { "TEAM10", new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "Team Manager 1.0" }
+                    { 1, "TRNY10", new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "Tournament Master 1.0" },
+                    { 2, "LEAG10", new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "League Scheduler 1.0" },
+                    { 3, "LEAGD10", new DateTime(2016, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7.9900000000000002, "League Scheduler Deluxe 1.0" },
+                    { 4, "DRAFT10", new DateTime(2017, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "Draft Manager 1.0" },
+                    { 5, "TEAM10", new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4.9900000000000002, "Team Manager 1.0" }
                 });
 
             migrationBuilder.InsertData(
@@ -160,13 +162,13 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
 
             migrationBuilder.InsertData(
                 table: "Incidents",
-                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductCode", "TechnicianId", "Title" },
-                values: new object[] { 2, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Could npt install the Team Manager 1.0", "TEAM10", null, "Could not install" });
+                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
+                values: new object[] { 2, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Could npt install the Team Manager 1.0", 5, null, "Could not install" });
 
             migrationBuilder.InsertData(
                 table: "Incidents",
-                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductCode", "TechnicianId", "Title" },
-                values: new object[] { 1, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Could npt install the Draft Manager 1.0", "DRAFT10", 1, "Could not install" });
+                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
+                values: new object[] { 1, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Could npt install the Draft Manager 1.0", 4, 1, "Could not install" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryId",
@@ -179,9 +181,9 @@ namespace GBCSporting2021_Mac_and_Cheese.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Incidents_ProductCode",
+                name: "IX_Incidents_ProductId",
                 table: "Incidents",
-                column: "ProductCode");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Incidents_TechnicianId",

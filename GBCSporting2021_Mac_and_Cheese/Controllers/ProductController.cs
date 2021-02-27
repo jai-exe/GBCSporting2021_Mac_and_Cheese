@@ -10,9 +10,9 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
 {
     public class ProductController : Controller
     {
-        private ContactContext context { get; set; }
+        private SportContext context { get; set; }
 
-        public ProductController(ContactContext ctx)
+        public ProductController(SportContext ctx)
         {
             context = ctx;
         }
@@ -30,18 +30,17 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             return View("Edit", new Product());
         }
         [HttpGet]
-        public IActionResult Edit(string id)
+        public IActionResult Edit(int id)
         {
-            var products = context.Products
-                               .FirstOrDefault(c => c.Code == id);
+            var products = context.Products.Find(id);
 
             ViewBag.Action = "Edit";
             return View(products);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(Product product)
         {
-            string action = (product.Code == null) ? "Add" : "Edit";
+            string action = (product.ProductId == 0) ? "Add" : "Edit";
             if (ModelState.IsValid)
             {
                 if (action == "Add")
@@ -62,13 +61,12 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             }
         }
         [HttpGet]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(int id)
         {
-            var products = context.Products
-                               .FirstOrDefault(c => c.Code == id);
+            var products = context.Products.Find(id);
             return View(products);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Delete(Product products)
         {
             context.Products.Remove(products);

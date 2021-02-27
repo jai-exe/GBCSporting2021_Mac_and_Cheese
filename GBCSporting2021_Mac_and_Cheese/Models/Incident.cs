@@ -1,4 +1,4 @@
-﻿using GBCSporting2021_Mac_and_Cheese.Models;
+﻿using GBCSporting2021_Mac_and_Cheese;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
         public Customer Customer { get; set; }
 
         [Required(ErrorMessage = "Please Select a Product from the List")]
-        public string ProductCode { get; set;}
+        public int ProductId { get; set;}
 
         public Product Product { get; set; }
 

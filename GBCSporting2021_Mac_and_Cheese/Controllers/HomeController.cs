@@ -12,9 +12,9 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
 {
     public class HomeController : Controller
     {
-        private ContactContext context { get; set; }
+        private SportContext context { get; set; }
 
-        public HomeController(ContactContext ctx)
+        public HomeController(SportContext ctx)
         {
             context = ctx;
         }

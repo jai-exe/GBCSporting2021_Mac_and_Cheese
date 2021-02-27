@@ -3,8 +3,10 @@
     "",
     "\\GBCSporting2021_Mac_and_Cheese",
     "\\GBCSporting2021_Mac_and_Cheese\\Controllers",
-    "\\GBCSporting2021_Mac_and_Cheese\\Models"
+    "\\GBCSporting2021_Mac_and_Cheese\\Models",
+    "\\GBCSporting2021_Mac_and_Cheese\\Views",
+    "\\GBCSporting2021_Mac_and_Cheese\\Views\\Shared"
   ],
-  "SelectedNode": "\\GBCSporting2021_Mac_and_Cheese\\Controllers\\CustomerController.cs",
+  "SelectedNode": "\\GBCSporting2021_Mac_and_Cheese\\GBCSporting2021_Mac_and_Cheese.sln",
   "PreviewInSolutionExplorer": false
 }

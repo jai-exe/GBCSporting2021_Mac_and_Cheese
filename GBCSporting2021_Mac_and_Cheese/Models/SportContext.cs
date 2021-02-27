@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GBCSporting2021_Mac_and_Cheese;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GBCSporting2021_Mac_and_Cheese.Models
 {
-    public class ContactContext:DbContext
+    public class SportContext:DbContext
     {
-        public ContactContext(DbContextOptions<ContactContext> options) : base(options)
+        public SportContext(DbContextOptions<SportContext> options) : base(options)
         {
 
         }
@@ -82,7 +83,8 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 );
             modelBuilder.Entity<Product>().HasData(
                 new Product 
-                { 
+                {
+                    ProductId = 1,
                     Code = "TRNY10",
                     ProductName = "Tournament Master 1.0",
                     Price = 4.99,
@@ -90,6 +92,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 },
                 new Product
                 {
+                    ProductId = 2,
                     Code = "LEAG10",
                     ProductName = "League Scheduler 1.0",
                     Price = 4.99,
@@ -97,6 +100,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 },
                 new Product
                 {
+                    ProductId = 3,
                     Code = "LEAGD10",
                     ProductName = "League Scheduler Deluxe 1.0",
                     Price = 7.99,
@@ -104,6 +108,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 },
                 new Product
                 {
+                    ProductId = 4,
                     Code = "DRAFT10",
                     ProductName = "Draft Manager 1.0",
                     Price = 4.99,
@@ -111,6 +116,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 },
                 new Product
                 {
+                    ProductId = 5,
                     Code = "TEAM10",
                     ProductName = "Team Manager 1.0",
                     Price = 4.99,
@@ -152,7 +158,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 {
                     IncidentId = 1,
                     CustomerId = 2,
-                    ProductCode = "DRAFT10",
+                    ProductId = 4,
                     Title = "Could not install",
                     Description = "Could npt install the Draft Manager 1.0",
                     DateOpened = DateTime.Parse("1/8/2020"),
@@ -162,7 +168,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Models
                 {
                     IncidentId = 2,
                     CustomerId = 1,
-                    ProductCode = "TEAM10",
+                    ProductId = 5,
                     Title = "Could not install",
                     Description = "Could npt install the Team Manager 1.0",
                     DateOpened = DateTime.Parse("1/8/2020")

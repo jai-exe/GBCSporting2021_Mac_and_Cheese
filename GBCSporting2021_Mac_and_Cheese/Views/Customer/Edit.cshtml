@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Customer
+@{
     if (ViewBag.Action == "Add")
     {
         ViewBag.Title = "Add Customer";
@@ -14,43 +15,50 @@
 
 <form asp-controller="Customer" asp-action="@ViewBag.Action">
     <div class="form-group">
-        <label for="fname">First Name</label>
-        <input type="text" name="fname" class="form-control" placeholder="eg. John" value="" />
+        <label asp-for="CustFName">First Name</label>
+        <input asp-for="CustFName" type="text" name="fname" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="lname">Last Name</label>
-        <input type="text" name="lname" class="form-control" placeholder="eg.Doe" value="" />
+        <label asp-for="CustLName">Last Name</label>
+        <input asp-for="CustLName" name="lname" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" name="address" class="form-control" placeholder="eg. 123 First Street" value="" />
+        <label asp-for="Address">Address</label>
+        <input asp-for="Address" type="text" name="address" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" name="city" class="form-control" placeholder="eg. Toronto" value="" />
+        <label asp-for="City">City</label>
+        <input asp-for="City" type="text" name="city" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" name="state" class="form-control" placeholder="eg. Ontario" value="" />
+        <label asp-for="State">State</label>
+        <input asp-for="State" type="text" name="state" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="postal">Postal Code</label>
-        <input type="text" name="postal" class="form-control" placeholder="eg. M4M 4M4" value="" />
+        <label asp-for="PostalCode">Postal Code</label>
+        <input asp-for="PostalCode" type="text" name="postal" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="country">Country</label>
-        <input type="text" name="country" class="form-control" value="" /> <!-- Please add the list of countries here as a combo box -->
+        <label asp-for="CountryId">Country</label>
+        <select asp-for="CountryId" class="form-control">
+            <option value="">Select a Country</option>
+            @foreach (Country c in ViewBag.Countries)
+            {
+                <option value="@c.CountryId">@c.CountryName</option>
+            }
+        </select>
     </div>
     <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" class="form-control" placeholder="eg. jonsnow@doamin.com" value="" />
+        <label asp-for="CustEmail">Email</label>
+        <input asp-for="CustEmail" type="email" name="email" class="form-control"/>
     </div>
     <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text" name="phone" class="form-control" placeholder="123-123-1234" value="" />
+        <label asp-for="CustPhone">Phone</label>
+        <input asp-for="CustPhone" type="text" name="phone" class="form-control"/>
     </div>
     <br />
-        <button class="btn btn-primary" type="submit">Save</button>
+        <input type="hidden" asp-for="CustId" />
+        <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
         <a class="btn btn-primary" asp-controller="Customer" asp-action="List">Cancel</a>
 
 </form>

@@ -10,9 +10,9 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
 {
     public class CustomerController : Controller
     {
-        private ContactContext context { get; set; }
+        private SportContext context { get; set; }
 
-        public CustomerController(ContactContext ctx)
+        public CustomerController(SportContext ctx)
         {
             context = ctx;
         }
@@ -34,15 +34,12 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var customers = context.Customers
-                               .Include(c => c.Country)
-                               .FirstOrDefault(c => c.CustId == id);
-
             ViewBag.Action = "Edit";
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
+            var customers = context.Customers.Find(id);
             return View(customers);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(Customer customer)
         {
             string action = (customer.CustId == 0) ? "Add" : "Edit";
@@ -69,12 +66,10 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var customers = context.Customers
-                               .Include(c => c.Country)
-                               .FirstOrDefault(c => c.CustId == id);
+            var customers = context.Customers.Find(id);
             return View(customers);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Delete(Customer customer)
         {
             context.Customers.Remove(customer);

@@ -10,9 +10,9 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
 {
     public class IncidentController : Controller
     {
-        private ContactContext context { get; set; }
+        private SportContext context { get; set; }
 
-        public IncidentController(ContactContext ctx)
+        public IncidentController(SportContext ctx)
         {
             context = ctx;
         }
@@ -38,19 +38,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var incidents = context.Incidents
-                               .Include(c => c.Customer)
-                               .Include(c => c.Product)
-                               .Include(c => c.Technician)
-                               .FirstOrDefault(c => c.IncidentId == id);
-
+            var incidents = context.Incidents.Find(id);
             ViewBag.Action = "Edit";
             ViewBag.Customers = context.Customers.OrderBy(c => c.CustFName).ToList();
             ViewBag.Products = context.Products.OrderBy(c => c.ProductName).ToList();
             ViewBag.Technicians = context.Technicians.OrderBy(c => c.TechName).ToList();
             return View(incidents);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(Incident incident)
         {
             string action = (incident.IncidentId == 0) ? "Add" : "Edit";
@@ -79,14 +74,10 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var incidents = context.Incidents
-                               .Include(c => c.Customer)
-                               .Include(c => c.Product)
-                               .Include(c => c.Technician)
-                               .FirstOrDefault(c => c.IncidentId == id);
+            var incidents = context.Incidents.Find(id);
             return View(incidents);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Delete(Incident incident)
         {
             context.Incidents.Remove(incident);
