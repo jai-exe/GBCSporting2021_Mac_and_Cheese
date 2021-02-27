@@ -16,27 +16,27 @@
 <form asp-controller="Customer" asp-action="@ViewBag.Action">
     <div class="form-group">
         <label asp-for="CustFName">First Name</label>
-        <input asp-for="CustFName" type="text" name="fname" class="form-control"/>
+        <input asp-for="CustFName" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="CustLName">Last Name</label>
-        <input asp-for="CustLName" name="lname" class="form-control"/>
+        <input asp-for="CustLName" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="Address">Address</label>
-        <input asp-for="Address" type="text" name="address" class="form-control"/>
+        <input asp-for="Address" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="City">City</label>
-        <input asp-for="City" type="text" name="city" class="form-control"/>
+        <input asp-for="City" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="State">State</label>
-        <input asp-for="State" type="text" name="state" class="form-control"/>
+        <input asp-for="State" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="PostalCode">Postal Code</label>
-        <input asp-for="PostalCode" type="text" name="postal" class="form-control"/>
+        <input asp-for="PostalCode" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="CountryId">Country</label>
@@ -50,14 +50,15 @@
     </div>
     <div class="form-group">
         <label asp-for="CustEmail">Email</label>
-        <input asp-for="CustEmail" type="email" name="email" class="form-control"/>
+        <input asp-for="CustEmail" class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="CustPhone">Phone</label>
-        <input asp-for="CustPhone" type="text" name="phone" class="form-control"/>
+        <input asp-for="CustPhone" class="form-control"/>
     </div>
     <br />
         <input type="hidden" asp-for="CustId" />
+
         <button class="btn btn-primary" type="submit">@ViewBag.Action</button>
         <a class="btn btn-primary" asp-controller="Customer" asp-action="List">Cancel</a>
 
