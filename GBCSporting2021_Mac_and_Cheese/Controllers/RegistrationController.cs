@@ -10,11 +10,13 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
     {
         public IActionResult GetCustomer()
         {
+            ViewBag.Current = "Registration";
             return View();
         }
 
         public IActionResult Registration()
         {
+            ViewBag.Current = "Registration";
             return View();
         }
     }

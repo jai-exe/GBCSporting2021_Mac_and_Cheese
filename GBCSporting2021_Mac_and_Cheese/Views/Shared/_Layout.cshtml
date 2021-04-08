@@ -14,6 +14,16 @@
         .navbar{
             background-color: #f9d423 !important;
         }
+        .about {
+            clear: both;
+            height: 50vh;
+            vertical-align: middle;
+            background-color: dimgray;
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 100%;
+        }
         
     </style>
 </head>
@@ -41,7 +51,7 @@
                     <li class="nav-item @(ViewBag.Current == "Incident" ? "active" : "")">
                         <a class="nav-link" asp-controller="Incident" asp-action="List">Incidents</a>
                     </li>
-                    <li class="nav-item @(ViewBag.Current == "Registrations" ? "active" : "")">
+                    <li class="nav-item @(ViewBag.Current == "Registration" ? "active" : "")">
                         <a class="nav-link" asp-controller="Registration" asp-action="GetCustomer">Registrations</a>
                     </li>
                 </ul>

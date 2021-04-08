@@ -28,8 +28,21 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             return View(incidents);
         }
         [HttpGet]
+        public IActionResult IncidentByTech()
+        {
+            ViewBag.Current = "Technician";
+            return View();
+        }
+        [HttpGet]
+        public IActionResult GetTechnician()
+        {
+            ViewBag.Current = "Technician";
+            return View();
+        }
+        [HttpGet]
         public IActionResult ListOpen()
         {
+            ViewBag.Current = "Incident";
             var incidents = context.Incidents
                                .Include(c => c.Customer)
                                .Include(c => c.Product)
@@ -40,6 +53,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult ListUnassign()
         {
+            ViewBag.Current = "Incident";
             var incidents = context.Incidents
                                .Include(c => c.Customer)
                                .Include(c => c.Product)
