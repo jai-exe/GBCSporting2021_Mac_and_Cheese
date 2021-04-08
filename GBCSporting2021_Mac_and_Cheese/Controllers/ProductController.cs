@@ -19,6 +19,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            ViewBag.Current = "Product";
             var products = context.Products
                                .OrderBy(c => c.ProductName).ToList();
             return View(products);
@@ -26,12 +27,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Current = "Product";
             ViewBag.Action = "Add";
             return View("Edit", new Product());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Current = "Product";
             var products = context.Products.Find(id);
 
             ViewBag.Action = "Edit";
@@ -41,6 +44,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Product product)
         {
+            ViewBag.Current = "Product";
             string action = (product.ProductId == 0) ? "Add" : "Edit";
             if (ModelState.IsValid)
             {
@@ -64,12 +68,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            ViewBag.Current = "Product";
             var products = context.Products.Find(id);
             return View(products);
         }
         [HttpPost]
         public IActionResult Delete(Product products)
         {
+            ViewBag.Current = "Product";
             context.Products.Remove(products);
             context.SaveChanges();
             return RedirectToAction("List", "Product");

@@ -19,6 +19,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            ViewBag.Current = "Customer";
             var customers = context.Customers
                                .Include(c => c.Country)
                                .OrderBy(c => c.CustFName).ToList();
@@ -27,6 +28,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Current = "Customer";
             ViewBag.Action = "Add";
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
             return View("Edit", new Customer());
@@ -34,6 +36,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Current = "Customer";
             ViewBag.Action = "Edit";
             ViewBag.Countries = context.Countries.OrderBy(c => c.CountryName).ToList();
             var customers = context.Customers.Find(id);
@@ -43,6 +46,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Customer customer)
         {
+            ViewBag.Current = "Customer";
             string action = (customer.CustId == 0) ? "Add" : "Edit";
             if (ModelState.IsValid)
             {
@@ -67,12 +71,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            ViewBag.Current = "Customer";
             var customers = context.Customers.Find(id);
             return View(customers);
         }
         [HttpPost]
         public IActionResult Delete(Customer customer)
         {
+            ViewBag.Current = "Customer";
             context.Customers.Remove(customer);
             context.SaveChanges();
             return RedirectToAction("List","Customer");

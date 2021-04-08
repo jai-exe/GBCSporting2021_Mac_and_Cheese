@@ -19,6 +19,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            ViewBag.Current = "Incident";
             var incidents = context.Incidents
                                .Include(c => c.Customer)
                                .Include(c => c.Product)
@@ -27,8 +28,30 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
             return View(incidents);
         }
         [HttpGet]
+        public IActionResult ListOpen()
+        {
+            var incidents = context.Incidents
+                               .Include(c => c.Customer)
+                               .Include(c => c.Product)
+                               .Include(c => c.Technician)
+                               .OrderBy(c => c.Title).ToList();
+            return View(incidents);
+        }
+        [HttpGet]
+        public IActionResult ListUnassign()
+        {
+            var incidents = context.Incidents
+                               .Include(c => c.Customer)
+                               .Include(c => c.Product)
+                               .Include(c => c.Technician)
+                               .OrderBy(c => c.Title).ToList();
+            return View(incidents);
+        }
+
+        [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Current = "Incident";
             ViewBag.Action = "Add";
             ViewBag.Customers = context.Customers.OrderBy(c => c.CustFName).ToList();
             ViewBag.Products = context.Products.OrderBy(c => c.ProductName).ToList();
@@ -38,6 +61,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Current = "Incident";
             var incidents = context.Incidents.Find(id);
             ViewBag.Action = "Edit";
             ViewBag.Customers = context.Customers.OrderBy(c => c.CustFName).ToList();
@@ -49,6 +73,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Incident incident)
         {
+            ViewBag.Current = "Incident";
             string action = (incident.IncidentId == 0) ? "Add" : "Edit";
             if (ModelState.IsValid)
             {
@@ -75,12 +100,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            ViewBag.Current = "Incident";
             var incidents = context.Incidents.Find(id);
             return View(incidents);
         }
         [HttpPost]
         public IActionResult Delete(Incident incident)
         {
+            ViewBag.Current = "Incident";
             context.Incidents.Remove(incident);
             context.SaveChanges();
             return RedirectToAction("List", "Incident");

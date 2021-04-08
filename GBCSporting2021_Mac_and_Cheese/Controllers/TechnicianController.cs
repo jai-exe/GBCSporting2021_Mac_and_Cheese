@@ -19,6 +19,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            ViewBag.Current = "Technician";
             var technicians = context.Technicians
                                .OrderBy(c => c.TechName).ToList();
             return View(technicians);
@@ -26,12 +27,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Current = "Technician";
             ViewBag.Action = "Add";
             return View("Edit", new Technician());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Current = "Technician";
             var technicians = context.Technicians.Find(id);
             ViewBag.Action = "Edit";
             return View(technicians);
@@ -40,6 +43,7 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Technician tech)
         {
+            ViewBag.Current = "Technician";
             string action = (tech.TechId == 0) ? "Add" : "Edit";
             if (ModelState.IsValid)
             {
@@ -63,12 +67,14 @@ namespace GBCSporting2021_Mac_and_Cheese.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            ViewBag.Current = "Technician";
             var tech = context.Technicians.Find(id);
             return View(tech);
         }
         [HttpPost]
         public IActionResult Delete(Technician tech)
         {
+            ViewBag.Current = "Technician";
             context.Technicians.Remove(tech);
             context.SaveChanges();
             return RedirectToAction("List", "Technician");
